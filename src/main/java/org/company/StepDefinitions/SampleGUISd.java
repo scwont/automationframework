@@ -40,9 +40,9 @@ public class SampleGUISd {
         writeJSONFile.writeValueJsonFile(jsonFile+".json", key, value);
     }
 
-    @When("^I read data from JSON file$")
-    public void readJsonFile() {
+    @When("^I read data from JSON file:([^\\\"]*) key:([^\\\"]*)$")
+    public void readJsonFile(String jsonFile, String key) {
         ReadJSONFile readJSONFile = new ReadJSONFile();
-        assertEquals("a@a.com", readJSONFile.getJsonValue("users.json", "test"));
+        assertEquals("a@a.com", readJSONFile.getJsonValue(jsonFile+".json", key));
     }
 }
